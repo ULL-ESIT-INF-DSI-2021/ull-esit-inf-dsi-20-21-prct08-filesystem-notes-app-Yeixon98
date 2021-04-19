@@ -1,0 +1,25 @@
+{
+  "name": "p8",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tests": "mocha",
+    "coverage": "nyc npm run tests && nyc report --reporter=text-lcov | coveralls && rm -rf .nyc_output",
+    "docs": "typedoc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.2.16",
+    "@types/mocha": "^8.2.2",
+    "chai": "^4.3.4",
+    "coveralls": "^3.1.0",
+    "mocha": "^8.3.2",
+    "nyc": "^15.1.0",
+    "ts-node": "^9.1.1",
+    "typedoc": "^0.20.35",
+    "typescript": "^4.2.4"
+  }
+}
