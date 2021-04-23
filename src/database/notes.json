@@ -1,0 +1,19 @@
+{
+  "Users": [
+    {
+      "name": "Juan",
+      "Notes": [
+        {
+          "title": "Arroz",
+          "content": "Postre muy rico",
+          "color": "red"
+        },
+        {
+          "title": "Manzana",
+          "content": "Postre muy rico",
+          "color": "yellow"
+        }
+      ]
+    }
+  ]
+}
