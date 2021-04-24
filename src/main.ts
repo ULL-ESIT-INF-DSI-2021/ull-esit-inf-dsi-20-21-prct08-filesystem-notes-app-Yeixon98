@@ -3,6 +3,57 @@ import * as yargs from 'yargs';
 import { DataBase } from './database';
 import { Nota } from './nota';
 
+
+yargs.command({
+  command: 'remove',
+  describe: 'remove note of the user',
+  builder: {
+    author: {
+        describe: 'Note author',
+        demandOption: true,
+        type: 'string',
+    },
+    title: {
+      describe: 'Note title',
+      demandOption: true,
+      type: 'string',
+    },
+  },
+
+  handler(argv) {
+    if ((typeof argv.author === 'string') && (typeof argv.title === 'string')) {
+        let Nota_: Nota = new Nota(argv.title, "", "blue");
+        let BD: DataBase = new DataBase(argv.author, Nota_);
+        BD.remove();
+    }
+  },
+});
+
+yargs.command({
+  command: 'read',
+  describe: 'Read note of the user',
+  builder: {
+    author: {
+        describe: 'Note author',
+        demandOption: true,
+        type: 'string',
+    },
+    title: {
+      describe: 'Note title',
+      demandOption: true,
+      type: 'string',
+    },
+  },
+
+  handler(argv) {
+    if ((typeof argv.author === 'string') && (typeof argv.title === 'string')) {
+        let Nota_: Nota = new Nota(argv.title, "", "blue");
+        let BD: DataBase = new DataBase(argv.author, Nota_);
+        BD.read();
+    }
+  },
+});
+
 yargs.command({
     command: 'list',
     describe: 'List note of the user',
@@ -17,11 +68,11 @@ yargs.command({
     handler(argv) {
       if (typeof argv.author === 'string') {
           let Nota_: Nota = new Nota("", "", "blue");
-          let BD_list: DataBase = new DataBase(argv.author, Nota_);
-          BD_list.list();
+          let BD: DataBase = new DataBase(argv.author, Nota_);
+          BD.list();
       }
     },
-}).parse();
+});
 
 yargs.command({
   command: 'add',
@@ -52,8 +103,9 @@ yargs.command({
   handler(argv) {
     if ((typeof argv.title === 'string') && (typeof argv.content === 'string') && (typeof argv.color === 'string') && (typeof argv.author === 'string')) {
         let Nota_: Nota = new Nota(argv.title, argv.content, argv.color);
-        let BD_add: DataBase = new DataBase(argv.author, Nota_);
-        BD_add.add();
+        let BD: DataBase = new DataBase(argv.author, Nota_);
+        BD.add();
     }
   },
-}).parse();
+});
+yargs.parse();

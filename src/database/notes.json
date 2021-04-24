@@ -1,17 +1,12 @@
 {
   "Users": [
     {
-      "name": "Juan",
+      "name": "Milton",
       "Notes": [
         {
-          "title": "Arroz",
+          "title": "SAD",
           "content": "Postre muy rico",
-          "color": "red"
-        },
-        {
-          "title": "Manzana",
-          "content": "Postre muy rico",
-          "color": "yellow"
+          "color": "green"
         }
       ]
     }
