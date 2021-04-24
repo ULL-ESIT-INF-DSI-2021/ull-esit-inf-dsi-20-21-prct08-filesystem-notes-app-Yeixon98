@@ -5,8 +5,13 @@
       "Notes": [
         {
           "title": "SAD",
-          "content": "Postre muy rico",
+          "content": "Estoy triste",
           "color": "green"
+        },
+        {
+          "title": "Pera",
+          "content": "Una fruta saludable",
+          "color": "yellow"
         }
       ]
     }

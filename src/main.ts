@@ -5,6 +5,36 @@ import { Nota } from './nota';
 
 
 yargs.command({
+  command: 'modify',
+  describe: 'remove note of the user',
+  builder: {
+    author: {
+        describe: 'Note author',
+        demandOption: true,
+        type: 'string',
+    },
+    title: {
+      describe: 'Note title',
+      demandOption: true,
+      type: 'string',
+    },
+    content: {
+      describe: 'Note content',
+      demandOption: true,
+      type: 'string',
+    },
+  },
+
+  handler(argv) {
+    if ((typeof argv.author === 'string') && (typeof argv.title === 'string') && (typeof argv.content === 'string')) {
+        let Nota_: Nota = new Nota(argv.title, argv.content, "blue");
+        let BD: DataBase = new DataBase(argv.author, Nota_);
+        BD.modify();
+    }
+  },
+});
+
+yargs.command({
   command: 'remove',
   describe: 'remove note of the user',
   builder: {

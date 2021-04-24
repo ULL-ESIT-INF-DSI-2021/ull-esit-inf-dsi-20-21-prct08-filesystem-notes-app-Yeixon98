@@ -13,7 +13,7 @@ export class DataBase{
     constructor(private author: string, private note: Nota){}
 
     check_author(): boolean{
-        let flag: boolean = false
+        let flag: boolean = false;
         if(db.get("Users").find({name: this.author}).value()){
             flag = true;
         }
@@ -21,7 +21,7 @@ export class DataBase{
     }
 
     check_title(): boolean{
-        let flag: boolean = false
+        let flag: boolean = false;
         if(db.get("Users").find({name: this.author}).get("Notes").find({title: this.note.get_title()}).value()){
             flag = true;
         }
@@ -30,18 +30,19 @@ export class DataBase{
 
     add(){
         db.defaults({Users: []})
-        .write()
+            .write();
         
         if(!this.check_author()) {
             db.get("Users")
             .push({name: this.author, Notes: []})
-            .write()
+            .write();
         }
 
         if(!this.check_title()) {
             db.get("Users").find({name: this.author}).get("Notes")
                 .push({title: this.note.get_title(), content: this.note.get_content(), color: this.note.get_color()})
-                .write()
+                .write();
+            console.log(chalk.green("Nota añadida"));
         }
         else {
             console.log(chalk.red("La nota ya existe"));
@@ -140,6 +141,26 @@ export class DataBase{
     }
 
     modify(){
-
+        if(this.check_author()){
+            if(this.check_title()){
+                let sz: number = db.get("Users").find({name: this.author}).get("Notes").size().value();
+                for (let i = 0; i < sz; i++) {
+                    if(db.get("Users").find({name: this.author}).get(`Notes[${i}].title`).value() == this.note.get_title()){
+                        db.get("Users").find({name: this.author}).get(`Notes[${i}]`)
+                            .assign({ content: this.note.get_content() })
+                            .value();
+                        db.write();
+                        break;
+                    }
+                }
+                console.log(chalk.green("Nota modificada"));
+            }
+            else {
+                console.log(chalk.red("Nota no encontrada"));
+            }
+        }
+        else{
+            console.log(chalk.red("Autor no encontrado"));
+        }
     }
 }
