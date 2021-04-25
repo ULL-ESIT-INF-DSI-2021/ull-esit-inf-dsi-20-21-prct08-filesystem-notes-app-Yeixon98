@@ -43,9 +43,11 @@ export class DataBase{
                 .push({title: this.note.get_title(), content: this.note.get_content(), color: this.note.get_color()})
                 .write();
             console.log(chalk.green("Nota añadida"));
+            return true;
         }
         else {
             console.log(chalk.red("La nota ya existe"));
+            return false;
         }
     }
 
@@ -58,9 +60,11 @@ export class DataBase{
                 let color: string = db.get("Users").find({name: this.author}).get(`Notes[${i}].color`).value();
                 this.print(i+1, title, color);
             }
+            return true;
         }
         else{
             console.log(chalk.red("Autor no encontrado"));
+            return false
         }
     }
 
@@ -77,13 +81,16 @@ export class DataBase{
                         break;
                     }
                 }
+                return true;
             }
             else {
                 console.log(chalk.red("Nota no encontrada"));
+                return false;
             }
         }
         else{
             console.log(chalk.red("Autor no encontrado"));
+            return false;
         }
     }
 
@@ -130,13 +137,16 @@ export class DataBase{
                     }
                 }
                 console.log(chalk.green("Nota eliminada"));
+                return true;
             }
             else {
                 console.log(chalk.red("Nota no encontrada"));
+                return false;
             }
         }
         else{
             console.log(chalk.red("Autor no encontrado"));
+            return false;
         }
     }
 
@@ -154,13 +164,16 @@ export class DataBase{
                     }
                 }
                 console.log(chalk.green("Nota modificada"));
+                return true;
             }
             else {
                 console.log(chalk.red("Nota no encontrada"));
+                return false;
             }
         }
         else{
             console.log(chalk.red("Autor no encontrado"));
+            return false;
         }
     }
 }

@@ -16,17 +16,14 @@ export class Nota{
     }
 
     checkColor() {
-        let flag: boolean = false;
+        let flag: boolean = true;
         let paletadecolores: string[] = ["red", "blue", "yellow", "green"];
         if(paletadecolores.find(x => x === this.color) === undefined){
             console.log("Color Invalido");
             console.log("Valor seteado al predeterminado");
             this.color= "blue";
+            flag = false;
         }
+        return flag;
     }
-
-    //set_content
-    //print_title
-    //print_content
-
 }

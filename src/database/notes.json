@@ -10,10 +10,14 @@
         },
         {
           "title": "Pera",
-          "content": "Una fruta saludable",
+          "content": "Una fruta saludable XD",
           "color": "yellow"
         }
       ]
+    },
+    {
+      "name": "Tester",
+      "Notes": []
     }
   ]
 }
