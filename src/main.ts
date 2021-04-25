@@ -3,6 +3,26 @@ import * as yargs from 'yargs';
 import { DataBase } from './database';
 import { Nota } from './nota';
 
+/**
+ * @module main
+ * # Archivo main
+ * 
+ * Es el encargado de la ejecucion del programa,
+ * para ello usamos la libreria yargs, que nos 
+ * permite controlar los argumentos a la hora 
+ * de la ejecucion del programa
+ * 
+ * Ejemplo -> node dist/main.js add --author="Pedro" --title="Compra" --content="Arroz" --color="red" 
+ * 
+ * Para este ejemplo, el add, es necesario los argumentos author, title, content, color,
+ * ya que estos se usaran apra crear una nueva nota y añadirla en caso de que no exista.
+ * Cuando se invoca el comando, creamos un objeto Nota con los atributos title, content, color.
+ * Luego un objeto DataBase con el author y la Nota creada y llamamos al metodo add de DataBase.
+ * 
+ * Esto mismo ocurre con el resto de comandos, que necesitan ciertos argumentos,
+ * como modify, remove, list, read.
+ * @module
+ */
 
 yargs.command({
   command: 'modify',

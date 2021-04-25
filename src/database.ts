@@ -7,8 +7,41 @@ import { Nota } from "./nota";
     const adapter = new FileSync("./src/database/notes.json");
     const db = low(adapter);  
 
-    // console.log(chalk.blue("This text is blue");
-
+/**
+ * # Clase DataBase
+ * Esta clase es la encargada de gestionar el fichero de almacenamiento de las notas,
+ * para ello, cuando se llema al constructor se le apsa el autor y la nota.
+ * 
+ * ## Metodos
+ * Es el encargado de comprobar si existe el usuario
+ * @method check_author() //Devulve true o false
+ * Es el encargado de comprobar si existe la nota
+ * @method check_title() //Devulve true o false 
+ * El metodo add usa la comprobacion de check_author() para saber si el autor ya esta,
+ * en caso de que no, lo crea, si esta lo que hace es comprobar luego con check_title()
+ * si ya esta la nota, en caso de que no este la añade
+ * @method add()
+ * El metodo list() compruba la existencia del autor, y si esta lista 
+ * el titulo de todas las notas de este autor.
+ * @method list()
+ * El metodo read() comprueba si esta el autor y el titulo de la nota, 
+ * en caso de que si, muestra el titulo y el contenido
+ * @method read()
+ * El metodo privado print() se usa para mostrar en consola el contenido que
+ * ilustran los otros dos metodos anteriores
+ * @method print()
+ * El metodo remove() comprueba si existe el autor, luego si existe la nota,
+ * en caso de que si, toma el tamaño de las notas, recorre todas las notas 
+ * y cuando encuentra la que se quiere eliminar, se hace uso de la funcion remove
+ * de lowdb que hay que pasarle el objeto a eliminar, por esto es necesario buscar
+ * la nota puesto que para la funcion remove del main solo se le pasa como parametro
+ * el autor y el titulo.
+ * @method remove()
+ * El metodo modificar() realiz las comprobaciones de autor y titulo, en caso de que si
+ * este busca esta nota al igual que el remover busca la que quiere borrar, pero en este
+ * caso haciendo uso del assign de lowdb podemos modificar el contenido de un campo.
+ * @method modify()
+ */
 export class DataBase{
     constructor(private author: string, private note: Nota){}
 
